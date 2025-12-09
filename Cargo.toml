@@ -6,9 +6,9 @@ rust-version = "1.70"
 authors = ["Claude 4.5 Sonnet <ac-rn-git@pm.me>"]
 description = "High-performance Windows Registry hive parser with Python bindings"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/ac-rn/reg-parser"
-documentation = "https://docs.rs/reg-parser"
-homepage = "https://github.com/ac-rn/reg-parser"
+repository = "https://github.com/ac-rn/reg-rs"
+documentation = "https://docs.rs/reg-rs"
+homepage = "https://github.com/ac-rn/reg-rs"
 readme = "README.md"
 keywords = ["registry", "windows", "forensics", "parser", "hive"]
 categories = ["parser-implementations", "os::windows-apis"]
@@ -35,7 +35,7 @@ exclude = [
 ]
 
 [lib]
-name = "reg_parser"
+name = "reg_rsparser"
 crate-type = ["rlib", "cdylib"]
 
 [dependencies]

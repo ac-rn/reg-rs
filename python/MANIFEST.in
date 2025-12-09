@@ -7,4 +7,4 @@ include ../Cargo.toml
 include ../Cargo.lock
 recursive-include ../src *.rs
 recursive-include examples *.py
-include reg_parser.pyi
+include reg_rsparser.pyi
