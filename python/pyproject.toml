@@ -37,9 +37,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ac-rn/reg-parser"
-Repository = "https://github.com/ac-rn/reg-parser"
-Documentation = "https://github.com/ac-rn/reg-parser/blob/main/python/README.md"
+Homepage = "https://github.com/ac-rn/reg-rs"
+Repository = "https://github.com/ac-rn/reg-rs"
+Documentation = "https://github.com/ac-rn/reg-rs/blob/main/python/README.md"
 
 [tool.maturin]
 features = ["python"]

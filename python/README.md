@@ -20,7 +20,7 @@ High-performance Python bindings for the Windows Registry hive parser, built on 
 ### From PyPI (when published)
 
 ```bash
-pip install reg-parser
+pip install reg-rsparser
 ```
 
 ### From Source
@@ -35,8 +35,8 @@ Requirements:
 pip install maturin
 
 # Clone the repository
-git clone https://github.com/ac-rn/reg-parser.git
-cd reg-parser
+git clone https://github.com/ac-rn/reg-rs.git
+cd reg-rs
 
 # Build and install
 maturin develop --release --features python

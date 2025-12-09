@@ -1,5 +1,5 @@
 """
-Type stubs for reg_parser Python bindings.
+Type stubs for reg_rsparser Python bindings.
 
 This module provides Python bindings for the high-performance Windows Registry
 hive parser written in Rust.
