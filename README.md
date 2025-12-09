@@ -328,15 +328,11 @@ This parser implements the Windows Registry hive format as documented in:
 - **ri** (Index Root): List of subkey lists
 - **db** (Data Block): Big data block
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ### Development Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/reg-parser.git
+git clone https://github.com/ac-rn/reg-parser.git
 cd reg-parser
 
 # Build the project
