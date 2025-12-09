@@ -1,0 +1,77 @@
+[package]
+name = "reg-parser"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+authors = ["Claude 4.5 Sonnet <ac-rn-git@pm.me>"]
+description = "High-performance Windows Registry hive parser with Python bindings"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/ac-rn/reg-parser"
+documentation = "https://docs.rs/reg-parser"
+homepage = "https://github.com/ac-rn/reg-parser"
+readme = "README.md"
+keywords = ["registry", "windows", "forensics", "parser", "hive"]
+categories = ["parser-implementations", "os::windows-apis"]
+
+# Include only necessary files in the published crate
+include = [
+    "src/**/*",
+    "benches/**/*",
+    "tests/**/*",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE",
+]
+
+# Exclude test data and development files
+exclude = [
+    "test_data/*",
+    ".github/*",
+    "docs/*",
+]
+
+[lib]
+name = "reg_parser"
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+memmap2 = "0.9"
+thiserror = "1.0"
+byteorder = "1.5"
+encoding_rs = "0.8"
+chrono = "0.4"
+serde = { version = "1.0", features = ["derive"], optional = true }
+serde_json = { version = "1.0", optional = true }
+hex = "0.4"
+tracing = "0.1"
+pyo3 = { version = "0.20", features = ["extension-module"], optional = true }
+
+[features]
+default = []
+python = ["pyo3"]
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[[bench]]
+name = "parsing"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.bench]
+opt-level = 3
+lto = true
+
+# Documentation configuration for docs.rs
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+targets = ["x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc", "x86_64-apple-darwin"]

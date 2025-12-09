@@ -1,0 +1,10 @@
+# Include additional files in the Python package distribution
+
+include README.md
+include ../LICENSE-MIT
+include ../LICENSE-APACHE
+include ../Cargo.toml
+include ../Cargo.lock
+recursive-include ../src *.rs
+recursive-include examples *.py
+include reg_parser.pyi
