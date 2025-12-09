@@ -16,9 +16,10 @@ categories = ["parser-implementations", "os::windows-apis"]
 # Include only necessary files in the published crate
 include = [
     "src/**/*",
-    "benches/**/*",
+    "python/**/*",
     "tests/**/*",
     "Cargo.toml",
+    "pyproject.toml",
     "README.md",
     "LICENSE-MIT",
     "LICENSE-APACHE",
@@ -29,6 +30,8 @@ exclude = [
     "test_data/*",
     ".github/*",
     "docs/*",
+    "comparison/*",
+    "examples/*",
 ]
 
 [lib]
@@ -56,10 +59,6 @@ criterion = "0.5"
 proptest = "1.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-
-[[bench]]
-name = "parsing"
-harness = false
 
 [profile.release]
 opt-level = 3
