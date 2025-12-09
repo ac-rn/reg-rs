@@ -35,6 +35,7 @@ jobs:
           3.10
           3.11
           3.12
+          3.13
     
     - name: Install maturin
       run: pip install maturin
@@ -47,7 +48,7 @@ jobs:
     
     - name: Build wheels
       run: |
-        maturin build --release --features python --target ${{ matrix.target }}-unknown-linux-gnu --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 --out dist
+        maturin build --release --features python --target ${{ matrix.target }}-unknown-linux-gnu --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 python3.13 --out dist
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
@@ -95,6 +96,12 @@ jobs:
         python-version: '3.12'
         architecture: ${{ matrix.target }}
     
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+        architecture: ${{ matrix.target }}
+    
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
       with:
@@ -102,11 +109,11 @@ jobs:
     
     - name: Install maturin
       run: |
-        python3.12 -m pip install maturin
+        python3.13 -m pip install maturin
     
     - name: Build wheels
       run: |
-        python3.12 -m maturin build --release --features python --target ${{ matrix.target == 'x64' && 'x86_64-pc-windows-msvc' || 'i686-pc-windows-msvc' }} --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 --out dist
+        python3.13 -m maturin build --release --features python --target ${{ matrix.target == 'x64' && 'x86_64-pc-windows-msvc' || 'i686-pc-windows-msvc' }} --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 python3.13 --out dist
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
@@ -133,6 +140,7 @@ jobs:
           3.10
           3.11
           3.12
+          3.13
     
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
@@ -144,7 +152,7 @@ jobs:
     
     - name: Build wheels
       run: |
-        maturin build --release --features python --target ${{ matrix.target }}-apple-darwin --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 --out dist
+        maturin build --release --features python --target ${{ matrix.target }}-apple-darwin --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 python3.13 --out dist
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
@@ -183,7 +191,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12', '3.13']
     
     steps:
     - uses: actions/checkout@v4
