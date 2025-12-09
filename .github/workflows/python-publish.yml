@@ -29,7 +29,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: |
+          3.8
+          3.9
+          3.10
+          3.11
+          3.12
     
     - name: Install maturin
       run: pip install maturin
@@ -42,7 +47,7 @@ jobs:
     
     - name: Build wheels
       run: |
-        maturin build --release --features python --target ${{ matrix.target }}-unknown-linux-gnu --out dist
+        maturin build --release --features python --target ${{ matrix.target }}-unknown-linux-gnu --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 --out dist
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
@@ -55,15 +60,39 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        target: [x64, x86]
+        target: [x64]
     
     steps:
     - uses: actions/checkout@v4
     
-    - name: Set up Python
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+        architecture: ${{ matrix.target }}
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+        architecture: ${{ matrix.target }}
+    
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        architecture: ${{ matrix.target }}
+    
+    - name: Set up Python 3.11
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
+        architecture: ${{ matrix.target }}
+    
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
         architecture: ${{ matrix.target }}
     
     - name: Install Rust
@@ -72,11 +101,12 @@ jobs:
         targets: ${{ matrix.target == 'x64' && 'x86_64-pc-windows-msvc' || 'i686-pc-windows-msvc' }}
     
     - name: Install maturin
-      run: pip install maturin
+      run: |
+        python3.12 -m pip install maturin
     
     - name: Build wheels
       run: |
-        maturin build --release --features python --target ${{ matrix.target == 'x64' && 'x86_64-pc-windows-msvc' || 'i686-pc-windows-msvc' }} --out dist
+        python3.12 -m maturin build --release --features python --target ${{ matrix.target == 'x64' && 'x86_64-pc-windows-msvc' || 'i686-pc-windows-msvc' }} --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 --out dist
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
@@ -97,7 +127,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: |
+          3.8
+          3.9
+          3.10
+          3.11
+          3.12
     
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
@@ -109,7 +144,7 @@ jobs:
     
     - name: Build wheels
       run: |
-        maturin build --release --features python --target ${{ matrix.target }}-apple-darwin --out dist
+        maturin build --release --features python --target ${{ matrix.target }}-apple-darwin --interpreter python3.8 python3.9 python3.10 python3.11 python3.12 --out dist
     
     - name: Upload wheels
       uses: actions/upload-artifact@v4
