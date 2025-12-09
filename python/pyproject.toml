@@ -44,4 +44,4 @@ Documentation = "https://github.com/ac-rn/reg-parser/blob/main/python/README.md"
 [tool.maturin]
 features = ["python"]
 python-source = "python"
-module-name = "reg_parser"
+module-name = "reg_rsparser"
