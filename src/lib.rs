@@ -100,18 +100,18 @@
 //! ```
 //!
 //! ## Supported Features
-///
-/// - Full registry hive parsing (SYSTEM, SOFTWARE, SAM, SECURITY, NTUSER.DAT, etc.)
-/// - All common value types (REG_SZ, REG_DWORD, REG_BINARY, REG_MULTI_SZ, REG_QWORD, etc.)
-/// - Subkey enumeration with efficient list structures (lf/lh/li/ri)
-/// - Transaction log (.LOG1, .LOG2) support for recovering uncommitted changes
-/// - **Big data block (db) support for values > 16KB** 
-///
-/// ## Planned Features
-///
-/// - Write support (currently read-only)
-/// - Security descriptor parsing
-/// - Class name extraction
+//!
+//! - Full registry hive parsing (SYSTEM, SOFTWARE, SAM, SECURITY, NTUSER.DAT, etc.)
+//! - All common value types (REG_SZ, REG_DWORD, REG_BINARY, REG_MULTI_SZ, REG_QWORD, etc.)
+//! - Subkey enumeration with efficient list structures (lf/lh/li/ri)
+//! - Transaction log (.LOG1, .LOG2) support for recovering uncommitted changes
+//! - **Big data block (db) support for values > 16KB** 
+//!
+//! ## Planned Features
+//!
+//! - Write support (currently read-only)
+//! - Security descriptor parsing
+//! - Class name extraction
 
 #![warn(missing_docs)]
 #![warn(clippy::all)]
