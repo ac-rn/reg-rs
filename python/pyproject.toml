@@ -3,7 +3,7 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "reg-rsparser"
+name = "regrs"
 version = "0.1.0"
 description = "High-performance Windows Registry hive parser with Python bindings"
 readme = "README.md"
@@ -44,4 +44,4 @@ Documentation = "https://github.com/ac-rn/reg-rs/blob/main/python/README.md"
 [tool.maturin]
 features = ["python"]
 python-source = "python"
-module-name = "reg_rsparser"
+module-name = "regrs"

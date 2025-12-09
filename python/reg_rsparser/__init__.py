@@ -5,7 +5,7 @@ A high-performance Windows Registry hive parser with Python bindings.
 Built on Rust for speed and safety.
 """
 
-from .reg_rsparser import (
+from .regrs import (
     Hive,
     RegistryKey,
     RegistryValue,

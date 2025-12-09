@@ -35,7 +35,7 @@ exclude = [
 ]
 
 [lib]
-name = "reg_rsparser"
+name = "regrs"
 crate-type = ["rlib", "cdylib"]
 
 [dependencies]

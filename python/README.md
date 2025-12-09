@@ -20,7 +20,7 @@ High-performance Python bindings for the Windows Registry hive parser, built on 
 ### From PyPI (when published)
 
 ```bash
-pip install reg-rsparser
+pip install regrs
 ```
 
 ### From Source
@@ -45,10 +45,10 @@ maturin develop --release --features python
 ## Quick Start
 
 ```python
-import reg_parser
+import regrs
 
 # Open a registry hive
-hive = reg_parser.Hive.open("SYSTEM")
+hive = regrs.Hive.open("SYSTEM")
 
 # Get the root key
 root = hive.root_key()
@@ -69,10 +69,10 @@ for value in root.values():
 ### Basic Usage
 
 ```python
-import reg_parser
+import regrs
 
 # Open a registry hive
-hive = reg_parser.Hive.open("test_data/SYSTEM")
+hive = regrs.Hive.open("test_data/SYSTEM")
 
 # Get base block information
 base_block = hive.base_block()
@@ -89,9 +89,9 @@ print(f"Values: {root.value_count()}")
 ### Accessing Specific Values
 
 ```python
-import reg_parser
+import regrs
 
-hive = reg_parser.Hive.open("SOFTWARE")
+hive = regrs.Hive.open("SOFTWARE")
 root = hive.root_key()
 
 # Navigate to a specific key
@@ -115,7 +115,7 @@ for subkey in root.subkeys():
 ### Deep Traversal
 
 ```python
-import reg_parser
+import regrs
 
 def traverse_keys(key, depth=0):
     """Recursively traverse registry keys."""
@@ -134,7 +134,7 @@ def traverse_keys(key, depth=0):
     for subkey in key.subkeys():
         traverse_keys(subkey, depth + 1)
 
-hive = reg_parser.Hive.open("SYSTEM")
+hive = regrs.Hive.open("SYSTEM")
 root = hive.root_key()
 traverse_keys(root)
 ```
@@ -142,9 +142,9 @@ traverse_keys(root)
 ### Working with Different Value Types
 
 ```python
-import reg_parser
+import regrs
 
-hive = reg_parser.Hive.open("SOFTWARE")
+hive = regrs.Hive.open("SOFTWARE")
 root = hive.root_key()
 
 for value in root.values():
@@ -174,10 +174,10 @@ for value in root.values():
 ### Applying Transaction Logs
 
 ```python
-import reg_parser
+import regrs
 
 # Open hive with transaction logs applied
-hive = reg_parser.Hive.open_with_logs(
+hive = regrs.Hive.open_with_logs(
     "SYSTEM",
     log1_path="SYSTEM.LOG1",
     log2_path="SYSTEM.LOG2"
@@ -190,7 +190,7 @@ hive.save("SYSTEM_cleaned")
 ### Forensic Analysis
 
 ```python
-import reg_parser
+import regrs
 from datetime import datetime
 
 def collect_strings(key, strings):
@@ -206,7 +206,7 @@ def collect_strings(key, strings):
     for subkey in key.subkeys():
         collect_strings(subkey, strings)
 
-hive = reg_parser.Hive.open("SYSTEM")
+hive = regrs.Hive.open("SYSTEM")
 root = hive.root_key()
 
 strings = []
@@ -221,9 +221,9 @@ for key_name, value_name, value_data in strings[:10]:
 ### Enumerating Hive Bins
 
 ```python
-import reg_parser
+import regrs
 
-hive = reg_parser.Hive.open("SYSTEM")
+hive = regrs.Hive.open("SYSTEM")
 
 # Get all hbin headers
 hbins = hive.hbins()
@@ -354,10 +354,10 @@ class ValueData:
 The library uses Python exceptions for error handling:
 
 ```python
-import reg_parser
+import regrs
 
 try:
-    hive = reg_parser.Hive.open("invalid.dat")
+    hive = regrs.Hive.open("invalid.dat")
 except IOError as e:
     print(f"I/O error: {e}")
 except ValueError as e:
@@ -421,7 +421,7 @@ python -m pytest python/tests/
 maturin build --release --features python
 
 # Install the wheel
-pip install target/wheels/reg_parser-*.whl
+pip install target/wheels/regrs-*.whl
 ```
 
 ## Testing
@@ -431,7 +431,7 @@ pip install target/wheels/reg_parser-*.whl
 python -m pytest python/tests/ -v
 
 # Run with coverage
-python -m pytest python/tests/ --cov=reg_parser --cov-report=html
+python -m pytest python/tests/ --cov=regrs --cov-report=html
 ```
 
 ## License
