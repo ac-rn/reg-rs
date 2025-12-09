@@ -680,7 +680,7 @@ impl PyHive {
 
 /// Python module definition
 #[pymodule]
-fn reg_parser(_py: Python, m: &PyModule) -> PyResult<()> {
+fn regrs(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<PyHive>()?;
     m.add_class::<PyRegistryKey>()?;
     m.add_class::<PyRegistryValue>()?;
